@@ -1,0 +1,160 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.3}
+\setlength{\parindent}{0pt}
+
+\newcommand{\risqueentete}{%
+  \toprule
+  \textbf{Risque} & \textbf{Cause} & \textbf{Conséquence} & \textbf{Niveau} & \textbf{Prévention} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Risque} & \textbf{Cause} & \textbf{Conséquence} & \textbf{Niveau} & \textbf{Prévention} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+}
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{Projet ARGUS -- Tableaux de risques du sous-système LiDAR + LASER}}\\[0.5em]
+ARGUS projet-- Octobre 2026
+\end{center}
+
+\small
+
+% ------------------------------------------------------------------
+\section*{1. Risques liés au LASER de puissance}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{3.7cm} >{\centering\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.0cm}}
+\risqueentete
+Puissance et chaleur trop élevées pour un 6U & 1\,kW optique avec un rendement de 35\,\% demande environ 2,9\,kW électriques, dont près de 1,9\,kW de chaleur & Difficultés d'alimenter et de refroidir le système & Élevé & Réduire $P_{moy}$, Privilégié les tirs courts sur batterie et faire une étude thermique \\
+Mauvais pointage & Tache de 3\,mm à 50\,m, soit environ 60\,$\mu$rad, très exigeant pour un CubeSat & Tir à côté du débris, pas d'ablation & Élevé & Utilisation d'un miroir de pointage fin guidé par le LiDAR \\
+Le débris s'éloigne pendant le tir & Avec $F = 30$\,mN sur 1\,kg, le débris s'écarte d'environ 150\,m en 100\,s & Impossible de tirer 2433\,s d'affilée pour avoir 73\,m/s & Élevé & Tirs courts, suivi du débris, viser un $\Delta V$ plus petit \\
+%%Valeurs incohérentes dans le dimensionnement & $E_p$ de 0,35\,J ou 0,5\,J, $P_c$ de 70 ou 100\,MW, fréquence 3000\,Hz (2\,kHz) ; 0,5\,J $\times$ 3000\,Hz fait 1500\,W et non 1000\,W & Calculs faux, à refaire & Moyen & Fixer un seul jeu de valeurs et tout recalculer \\
+Efficacité de l'ablation surestimée & $C_m = 30\ \mu$N$\cdot$s/J supposé constant & Force plus faible et durée de tir plus longue & Moyen & Prendre une marge, faire des essais au sol \\
+Optiques abîmées & Impulsions de 100\,MW crête, dépôt de vapeur d'aluminium & Perte de puissance, optique endommagée & Moyen & Marge sur le seuil de dommage, fenêtre de protection \\
+Fragmentation du débris & Fluence trop forte ou débris en rotation & Nouveaux débris (syndrome de Kessler) & Élevé & Contrôler la fluence, arrêter le tir en cas d'anomalie \\
+Tir ou réflexion non voulus & Surface en aluminium très réfléchissante & Éblouir ou abîmer un autre satellite & Moyen & Obturateur, tir autorisé seulement si la cible est verrouillée \\
+Danger pour les personnes pendant les essais & Laser de classe 4 à 1064\,nm & Lésion oculaire ou cutanée & Élevé & Lunettes adaptées, local fermé, responsable sécurité laser \\
+Panne de la source & Vieillissement des diodes de pompe & Perte de la mission & Moyen & Marge de fonctionnement, suivi de la puissance \\
+\end{longtable}
+
+% ------------------------------------------------------------------
+\section*{2. Risques liés au LiDAR}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{3.7cm} >{\centering\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.0cm}}
+\risqueentete
+Précision millimétrique non atteinte & Impulsion de 3\,ns et gigue du SPAD de 200\,ps, soit environ 3\,cm & Position moins précise que prévu & Moyen & Annoncer le centimètre, justifier le millimètre par le moyennage \\
+Signal de retour trop faible & Petit débris, rendement du SPAD de 20\,\% seulement, surface d'aluminium & Débris non détecté & Moyen & Faire un bilan de liaison, ajuster l'énergie ou la fréquence \\
+Éblouissement du capteur & Laser d'ablation, plasma, Soleil ou Terre dans le champ & Détection aveugle & Moyen & Filtre à 1550\,nm, fonctionnement en fenêtre, obturateur \\
+Perte de suivi du débris & Petite cible qui tourne, champ limité à $\pm 10$\textdegree & Tir impossible, cible perdue & Élevé & Algorithme de recapture, champ de vue adapté \\
+Capteur dégradé par les radiations & Bruit d'obscurité qui augmente (10\,kHz au départ) & Fausses détections & Moyen & Refroidissement, blindage, suivi du bruit \\
+Micro-miroir MEMS fragile & Effets des vibrations au lancement & Miroir bloqué ou décalé & Moyen & Verrouillage au lancement, essais vibration et thermique \\
+Synchronisation et calcul embarqué & Décalage entre émission et détection, calculateur de CubeSat limité & Mesures fausses ou trop lentes & Moyen & Horloge commune, algorithmes légers \\
+Sécurité oculaire du LiDAR & Faisceau de 10\,$\mu$J à 20\,kHz & Faible danger lors des essais & Faible & Vérifier la norme, limiter l'accès \\
+\end{longtable}
+
+% ------------------------------------------------------------------
+\section*{3. Risques liés à l'ensemble du payload LiDAR + LASER}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{3.7cm} >{\centering\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.0cm}}
+\risqueentete
+Charge utile trop lourde ou trop gourmande pour un 6U & Laser, refroidissement, batterie, LiDAR (environ 12\,W) et optiques à loger & Mission non réalisable en 6U & Élevé & Bilan de masse, volume et puissance avec les autres équipes \\
+Désalignement entre LiDAR et laser & Vibrations au lancement, variations de température & Le laser ne vise pas là où le LiDAR mesure & Élevé & Structure rigide commune, calibration en orbite \\
+Bug du logiciel de tir & Erreur dans la logique entre détection et tir & Tir intempestif ou blocage & Élevé & Logique simple, tests en boucle \\
+Interférences électromagnétiques & Alimentation pulsée du laser proche du capteur et de l'ordinateur de bord & Mesures perturbées, redémarrages & Moyen & Blindage, câblage soigné, tests CEM \\
+Chocs, vibrations et vide & Lancement et conditions orbitales & Pièces déréglées ou cassées & Moyen & Essais en vibration, thermique et vide \\
+Exigences de sécurité du lanceur & Laser de classe 4 et batterie à bord & Refus d'intégration & Élevé & Laser désactivé jusqu'à la séparation, dialogue précoce avec le lanceur \\
+Mauvaise éjection du débris & Vitesse de 0,1 à 0,5\,m/s mal maîtrisée & Débris qui revient vers le CubeSat & Moyen & Simuler la trajectoire relative avant le vol \\
+Perte de communication avec le sol & Tir en dehors des fenêtres de contact & Tir non contrôlé & Moyen & Tir inhibé par défaut, séquence autonome sûre \\
+Coût du laser & Source pulsée de 1\,kW qualifiée spatial hors budget étudiant & Projet bloqué & Élevé & Chiffrer auprès de fournisseurs, prévoir un démonstrateur plus faible \\
+\end{longtable}
+
+% ------------------------------------------------------------------
+\section*{4. Risques humains et organisationnels (liés au sous-système)}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{3.7cm} >{\centering\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.0cm}}
+\risqueentete
+%Trop de responsabilités sur une personne & Je pilote seul le sous-système & Blocage si je suis indisponible & Moyen & Désigner un suppléant, documenter \\
+Erreurs de calcul non repérées & Valeurs différentes d'un endroit à l'autre du document & Résultats faux dans le rapport & Moyen & Un seul fichier de calcul, relecture par un collègue \\
+Compétences limitées & Peu d'expérience en laser, optique et sécurité laser & Mauvais choix techniques, risque en essais & Élevé & Formation, avis de l'encadrant ou d'un expert \\
+Mauvaise communication entre équipes & Interfaces avec énergie, thermique, structure et attitude pas définies & Incompatibilités découvertes trop tard & Moyen & Réunions régulières, document d'interface \\
+Optimisme sur les hypothèses & Valeurs choisies pour que le calcul fonctionne (1\,kW, 73\,m/s) & La réalité peut être différente & Moyen & Relecture externe, marges explicites \\
+%Références incomplètes & « ref à ajouter » et « à compléter » dans le document & Sources contestables & Faible & Compléter toutes les références \\
+Erreur de manipulation en essai & Laser ou haute tension sans protocole & Accident corporel & Élevé & Protocole écrit, travail à deux, arrêt d'urgence \\
+\end{longtable}
+
+% ------------------------------------------------------------------
+\section*{5. Analyse de risques pour les participants}
+
+Probabilité / gravité, chacune notée sur 5 (5 = maximum).
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{6.0cm} >{\centering\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{8.9cm}}
+\toprule
+\textbf{Problème} & \textbf{Prob. / Gravité} & \textbf{Solution} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Problème} & \textbf{Prob. / Gravité} & \textbf{Solution} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Perte ou casse d'ordinateur & 2/4 & Appareil de secours, écriture manuelle \\
+Maladie de longue durée & 3/2 & Répartir le travail, travailler davantage une fois guéri \\
+Incapacité à travailler & 2/5 & Revoir le projet à la baisse, augmenter la ressource de chaque personne \\
+Exclusion du master & 1/5 & Idem \\
+Surcharge de travail (autres cours, examens, stage) & 3/4 & Se fier à un bon planning \\
+Disponibilités incompatibles entre membres & 4/3 & Réunions en visio et/ou indiquer ses disponibilités en amont, lire le compte rendu de réunion après \\
+Mauvaise estimation de la charge de travail & 3/3 & Répartir à nouveau le travail entre nous, le signaler en réunion ou au coordinateur \\
+Travail sur les mêmes parties & 4/4 & Définir les tâches avec le WBS \\
+Problème de timing pour les rendus & 3/5 & Respecter les jalons fixés en début d'année \\
+\end{longtable}
+
+% ------------------------------------------------------------------
+\section*{6. Tableau global de la charge utile LiDAR + LASER}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{6.4cm} >{\centering\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}p{7.0cm}}
+\toprule
+\textbf{Origine} & \textbf{Risque principal} & \textbf{Niveau} & \textbf{Mesure principale} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Origine} & \textbf{Risque principal} & \textbf{Niveau} & \textbf{Mesure principale} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Laser & Puissance et chaleur trop élevées pour un 6U & Élevé & Réduire $P_{moy}$, étude thermique \\
+Laser & Mauvais pointage de la tache de 3\,mm à 50\,m & Élevé & Miroir de pointage fin guidé par le LiDAR \\
+Laser & Le débris s'éloigne pendant le tir & Élevé & Tirs courts, suivi du débris, $\Delta V$ plus petit \\
+Laser & Fragmentation du débris & Élevé & Contrôle de la fluence, arrêt automatique \\
+%Laser & Valeurs incohérentes ($E_p$, $P_c$, $f$) & Moyen & Un seul jeu de valeurs, tout recalculer \\
+Laser & Danger pour les personnes en essai & Élevé & Responsable sécurité laser, lunettes, local fermé \\
+LiDAR & Perte de suivi du débris & Élevé & Recapture, champ de vue adapté \\
+LiDAR & Signal faible ou capteur ébloui & Moyen & Bilan de liaison, filtre à 1550\,nm \\
+LiDAR & Précision millimétrique non justifiée & Moyen & Annoncer le centimètre \\
+Payload & Masse, volume et puissance incompatibles avec un 6U & Élevé & Bilan commun avec les autres équipes \\
+Payload & Désalignement LiDAR / laser & Élevé & Structure rigide, calibration en orbite \\
+Payload & Disfonctionnement du logiciel de tir & Élevé & Logique simple, tests \\
+Payload & Exigences de sécurité du lanceur et coût du laser & Élevé & Laser désactivé avant séparation, chiffrage fournisseurs \\
+Humain & Manque de compétences laser et sécurité & Élevé & Formation, expert en relecture \\
+Humain & Erreurs de calcul non repérées et mauvaise communication entre équipes & Moyen & Relecture croisée, réunions d'interface \\
+Équipe & Travail sur les mêmes parties (4/4) & Élevé & Répartition claire avec le WBS \\
+Équipe & Retard sur les rendus (3/5) et surcharge de travail (3/4) & Élevé & Jalons fixés en début d'année, planning réaliste \\
+Équipe & Disponibilités incompatibles (4/3) et indisponibilité d'un membre & Moyen & Visio, comptes rendus, répartition du travail \\
+\end{longtable}
+
+\end{document}
