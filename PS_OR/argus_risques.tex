@@ -139,6 +139,21 @@ Synchronization and onboard computing & Offset between emission and detection, l
 LiDAR eye safety & 10\,$\mu$J beam at 20\,kHz & Low hazard during tests & Low & Check the standard, limit access \\
 \end{longtable}
 
+\subsection{Risks related to the camera and Machine Learning}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{3.7cm} >{\centering\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.0cm}}
+\risqueentete
+Missed or false debris detection & Small target, stars or reflections mistaken for debris & Target not acquired or wrong object tracked & High & Train with and without debris, check detection over several images \\
+Poor image quality & Shadows, strong reflections or motion blur & Debris features cannot be located reliably & Medium & Adjust exposure, test different lighting conditions, reject unusable images \\
+Training images not representative & Mostly simulated images, limited real views of the debris & Good ground results but poor performance in flight & High & Add real images, vary lighting and rotation, keep a separate test set \\
+Debris too small in the image & Camera sized for 2--10\,m, target farther away during firing & Detection possible but orientation cannot be estimated & High & Agree on a common operating distance, check target size in pixels \\
+Wrong distance or orientation estimate & Symmetric debris, poorly located features or camera calibration error & Incorrect tracking and pointing data & High & Calibrate the camera, check the 3D model, compare distance with the LiDAR \\
+Loss of visual tracking & Tumbling debris or target leaving the predicted image region & Position estimate no longer valid, firing interrupted & High & Restart full-image detection, inhibit firing until tracking is confirmed \\
+Onboard processing too slow & Two neural networks and tracking running on limited hardware & Two observations per second not reached, delayed pointing data & Medium & Test the complete chain on Q8S and XE2, simplify the models if needed \\
+Model deployment failure & Network operations unsupported on XE2 or reduced numerical precision & Model fails to run or gives less accurate results & Medium & Compile both networks early, compare onboard results with ground results \\
+Camera and LiDAR data out of sync & Different timestamps, transfer delays or inconsistent reference frames & Measurements refer to different target positions & High & Use a common clock, define reference frames, test the complete sensor interface \\
+\end{longtable}
+
 \subsection{Risks related to the whole LiDAR + LASER payload}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{3.7cm} >{\centering\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.0cm}}
