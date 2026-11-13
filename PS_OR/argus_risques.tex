@@ -6,6 +6,7 @@
 \usepackage[margin=1.5cm]{geometry}
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{graphicx}
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -47,16 +48,21 @@ ARGUS project -- November 2026
 \section{Mission Definition}
 
 \subsection{Studied object / functional mission target}
-\textbf{Definitive choice:} space debris in low Earth orbit, a small object (about 1\,kg, aluminium surface) to be tracked and deflected by a CubeSat. \todo{confirm the precise object or the precise part of the object (e.g.\ type of debris, size, rotation)}
+\textbf{Definitive choice:} space debris in low Earth orbit, a small object (about  less than 1\,kg, aluminium surface) to be tracked and deflected by a CubeSat.
 
 \subsection{Scientific / technological question or aim}
-\textbf{Definitive choice:} demonstrate that a 6U CubeSat can detect and track a small debris at short range with a LiDAR, and change its trajectory by laser ablation (target small $\Delta V , $F = 30$\,mN on 1\,kg)$.
+\textbf{Definitive choice:} demonstrate that a 6U CubeSat can detect and track a small debris at short range with a LiDAR, and change its trajectory by laser ablation (target : small $\Delta V$).
+
 
 \subsection{Main payload}
-\textbf{Definitive choice:} pulsed ablation LASER (1064\,nm, class 4) guided by a LiDAR (1550\,nm, SPAD detector, MEMS micro-mirror). \todo{confirm the final laser parameters: $E_p$, $P_c$, repetition rate, average power}
+The main payload of the Argus mission is the debris, which we aim to eject.
+The shape of the debris has not been finalized, but it will be a small object weighing less than 1\,kg with an aluminium surface.
+The second main payload is the laser, a Class 4 laser with a wavelength of 1064\,nm.
 
 \subsection{Secondary payloads (if any)}
-\todo{list the secondary payloads, ML and camera}
+The laser will be guided by a LiDAR (secondary payload) operating at a wavelength of 1550\,nm, equipped with a SPAD detector and a MEMS micro-mirror.
+The second secondary payload is a camera with a machine learning algorithm to detect the debris and estimate its orientation.
+Thanks to these two instruments, we can track the debris and fire the laser at it.
 
 \subsection{Experts contacted}
 Ratio of contacted experts: \todo{X}\,\% (\todo{X} experts contacted out of \todo{Y} experts initially identified).
@@ -88,7 +94,27 @@ if u have someone for laser ablation and ml and camera, please contact him
 \section{System Architecture and Diagrams}
 
 \subsection{Data Management Plan -- functional diagram V1}
-Diagram made with JIRA (see the ``Examples'' tab). \todo{insert the figure or the Jira link}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data_management.png}
+    \caption{Data Management Plan -- functional diagram V1.}
+    \label{fig:data_management}
+\end{figure}
+
+\noindent\textbf{Legend.} The diagram is divided into three phases:
+\textit{search of the debris} (detection and localisation),
+\textit{calculation after ablation} (check of the laser effect and transmission),
+and \textit{analysis of the data on ground}.
+Each box is a step of the chain, and the small text next to it gives the equipment
+performing the step (onboard computer, lidar, camera, communication board, antenna,
+ground station, ground computer, or researcher).
+The labels on the arrows give the type of data exchanged:
+\textit{picture} (raw camera image),
+\textit{position octet} (debris position encoded in bytes),
+\textit{octet} (binary data such as measurements and deviation),
+\textit{frequency} (radio signal between the antenna and the ground station),
+and \textit{text} (final publication).
 
 \subsection{Satellite platform -- functional diagram V1}
 \todo{insert the figure (see the ``Examples'' tab)look on miro}
@@ -169,6 +195,8 @@ Loss of communication with the ground & Firing outside the contact windows & Unc
 Laser cost & Space-qualified 1\,kW pulsed source beyond a student budget & Project blocked & High & Get quotes from suppliers, plan a lower-power demonstrator \\
 \end{longtable}
 
+
+
 \subsection{Human and organizational risks (related to the subsystem)}
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{3.7cm} >{\centering\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}p{4.0cm}}
@@ -186,7 +214,7 @@ Handling error during tests & Laser or high voltage without protocol & Personal 
 
 Probability / severity, each rated out of 5 (5 = maximum).
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{6.0cm} >{\centering\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{8.9cm}}
+\begin{longtable}{>{\raggedright\arraybackslash}p{5.6cm} >{\centering\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{8.8cm}}
 \toprule
 \textbf{Problem} & \textbf{Prob. / Severity} & \textbf{Solution} \\
 \midrule
@@ -208,69 +236,6 @@ Working on the same parts & 4/4 & Define the tasks with the WBS \\
 Timing problem for deliverables & 3/5 & Respect the milestones set at the beginning of the year \\
 \end{longtable}
 
-\subsection{Global table of the LiDAR + LASER payload}
 
-\begin{longtable}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{6.4cm} >{\centering\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}p{7.0cm}}
-\toprule
-\textbf{Origin} & \textbf{Main risk} & \textbf{Level} & \textbf{Main measure} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Origin} & \textbf{Main risk} & \textbf{Level} & \textbf{Main measure} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Laser & Power and heat too high for a 6U & High & Reduce $P_{avg}$, thermal study \\
-Laser & Poor pointing of the 3\,mm spot at 50\,m & High & Fine pointing mirror guided by the LiDAR \\
-Laser & Debris drifts away during firing & High & Short shots, debris tracking, smaller $\Delta V$ \\
-Laser & Debris fragmentation & High & Fluence control, automatic stop \\
-%Laser & Inconsistent values ($E_p$, $P_c$, $f$) & Medium & Single set of values, recalculate everything \\
-Laser & Hazard to people during tests & High & Laser safety officer, goggles, closed room \\
-LiDAR & Loss of debris tracking & High & Reacquisition, adapted field of view \\
-LiDAR & Weak signal or dazzled sensor & Medium & Link budget, 1550\,nm filter \\
-LiDAR & Millimetre accuracy not justified & Medium & Announce centimetre accuracy \\
-Payload & Mass, volume and power incompatible with a 6U & High & Common budget with the other teams \\
-Payload & LiDAR / laser misalignment & High & Rigid structure, in-orbit calibration \\
-Payload & Firing software malfunction & High & Simple logic, tests \\
-Payload & Launcher safety requirements and laser cost & High & Laser disabled before separation, supplier quotes \\
-Human & Lack of laser and safety skills & High & Training, expert review \\
-Human & Unnoticed calculation errors and poor communication between teams & Medium & Cross-review, interface meetings \\
-Team & Working on the same parts (4/4) & High & Clear split with the WBS \\
-Team & Delay on deliverables (3/5) and work overload (3/4) & High & Milestones set at the beginning of the year, realistic schedule \\
-Team & Incompatible availabilities (4/3) and unavailability of a member & Medium & Video calls, minutes, work sharing \\
-\end{longtable}
-
-% ==================================================================
-\section{Project Management}
-
-\subsection{Deliverables checklist}
-
-\begin{longtable}{>{\raggedright\arraybackslash}p{12cm} >{\centering\arraybackslash}p{2.5cm} >{\centering\arraybackslash}p{3cm}}
-\toprule
-\textbf{Deliverable} & \textbf{Section} & \textbf{Status} \\
-\midrule
-\endfirsthead
-\toprule
-\textbf{Deliverable} & \textbf{Section} & \textbf{Status} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-Definitive choice: studied object, precise part of the object, or functional mission target & 1.1 & \todo{} \\
-Definitive choice: precise scientific / technological question or aim & 1.2 & \todo{} \\
-Definitive choice: main payload & 1.3 & \todo{} \\
-Definitive choice: secondary payloads (if any) & 1.4 & \todo{} \\
-Ratio of contacted experts (X\,\% out of the Y experts initially identified) & 1.5 & \todo{} \\
-Precise functional description of all payloads' behavior & 2.1 & \todo{} \\
-Precise quantified description of the payloads' performance & 2.2 & \todo{} \\
-Data Management Plan functional diagram V1 (Miro.com) & 3.1 & \todo{} \\
-Satellite platform functional diagram V1 & 3.2 & \todo{} \\
-Satellite system model V1 -- IDM-CIC & 3.3 & \todo{} \\
-Mission analysis V1 (orbit, phases) & 4 & \todo{} \\
-Mission report summary V1 & 5 & \todo{} \\
-PPR tab elements 100\,\% done & -- & \todo{} \\
-Simple PS/OR slide deck ready (including screenshots of all up-to-date PM tools) & -- & \todo{} \\
-\end{longtable}
 
 \end{document}
