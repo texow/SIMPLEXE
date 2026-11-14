@@ -1,0 +1,256 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{Vincent2011}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=62399c02ef103df82419bd463fbb22f4}{%
+           family={MOREL},
+           familyi={M\bibinitperiod},
+           given={Vincent},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{62399c02ef103df82419bd463fbb22f4}
+      \strng{fullhash}{62399c02ef103df82419bd463fbb22f4}
+      \strng{fullhashraw}{62399c02ef103df82419bd463fbb22f4}
+      \strng{bibnamehash}{62399c02ef103df82419bd463fbb22f4}
+      \strng{authorbibnamehash}{62399c02ef103df82419bd463fbb22f4}
+      \strng{authornamehash}{62399c02ef103df82419bd463fbb22f4}
+      \strng{authorfullhash}{62399c02ef103df82419bd463fbb22f4}
+      \strng{authorfullhashraw}{62399c02ef103df82419bd463fbb22f4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Thèse,CNRS2011}
+      \field{title}{Dynamique de la création d'un plasma d'aluminium induit par LASER}
+      \field{year}{2011}
+      \field{pages}{1450}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1117/12.2010598
+      \endverb
+    \endentry
+    \entry{OpromollaNocerino}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=91e7b771a98a33eae099e50519617836}{%
+           family={Opromolla},
+           familyi={O\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+        {{hash=0e3b52f2cd06ce506473bc8ce3b5393b}{%
+           family={Nocerino},
+           familyi={N\bibinitperiod},
+           given={Alessia},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{daba3bbff3fe69b8616f78b7187daf44}
+      \strng{fullhash}{daba3bbff3fe69b8616f78b7187daf44}
+      \strng{fullhashraw}{daba3bbff3fe69b8616f78b7187daf44}
+      \strng{bibnamehash}{daba3bbff3fe69b8616f78b7187daf44}
+      \strng{authorbibnamehash}{daba3bbff3fe69b8616f78b7187daf44}
+      \strng{authornamehash}{daba3bbff3fe69b8616f78b7187daf44}
+      \strng{authorfullhash}{daba3bbff3fe69b8616f78b7187daf44}
+      \strng{authorfullhashraw}{daba3bbff3fe69b8616f78b7187daf44}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{note}{Compléter : volume, pages, année}
+      \field{title}{Uncooperative spacecraft relative navigation with {LIDAR}-based Unscented {K}alman Filter}
+    \endentry
+    \entry{VCSEL1550_2023}{article}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Chinese Journal of Lasers}
+      \field{note}{Auteurs à compléter depuis l'article}
+      \field{number}{19}
+      \field{title}{Vertical-Cavity-Surface-Emitting Laser with High Power in Eye-Safe Band}
+      \field{volume}{50}
+      \field{year}{2023}
+      \field{pages}{1901008}
+      \range{pages}{1}
+    \endentry
+    \entry{Pellegrini2006}{article}{}{}
+      \name{author}{10}{}{%
+        {{hash=a97ba9023663d06c03f9cfdb60c54801}{%
+           family={Pellegrini},
+           familyi={P\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod}}}%
+        {{hash=36cb366a6b0a1496f3d4840aff651ecb}{%
+           family={Warburton},
+           familyi={W\bibinitperiod},
+           given={Ryan\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=8f2fc56579ca8e964cfe673d7ffe3ad2}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Lionel\bibnamedelimb J.\bibnamedelimi J.},
+           giveni={L\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=d60efe9a18fc34dc6dfc670a69771a2c}{%
+           family={Ng},
+           familyi={N\bibinitperiod},
+           given={Jo\bibnamedelima Shien},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=94c0036e0e8784de4dcea8bfd236bb39}{%
+           family={Krysa},
+           familyi={K\bibinitperiod},
+           given={Andrey\bibnamedelima B.},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=956cd750689dd4621887324b41050424}{%
+           family={Groom},
+           familyi={G\bibinitperiod},
+           given={Kristian},
+           giveni={K\bibinitperiod}}}%
+        {{hash=3cdf5048d3b45b258657560a59bf45c0}{%
+           family={David},
+           familyi={D\bibinitperiod},
+           given={John\bibnamedelimb P.\bibnamedelimi R.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=47d1f5100624ed3dbb01f10b74d38012}{%
+           family={Cova},
+           familyi={C\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod}}}%
+        {{hash=dbe52f06a3411df3515965ce06b71d2e}{%
+           family={Robertson},
+           familyi={R\bibinitperiod},
+           given={Michael\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=54edc23378142dbfd3a2232a7fb0ab9c}{%
+           family={Buller},
+           familyi={B\bibinitperiod},
+           given={Gerald\bibnamedelima S.},
+           giveni={G\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{45ab1a64986749036bad3106bbdb8e88}
+      \strng{fullhash}{a647c312207944cc6361137789773067}
+      \strng{fullhashraw}{a647c312207944cc6361137789773067}
+      \strng{bibnamehash}{45ab1a64986749036bad3106bbdb8e88}
+      \strng{authorbibnamehash}{45ab1a64986749036bad3106bbdb8e88}
+      \strng{authornamehash}{45ab1a64986749036bad3106bbdb8e88}
+      \strng{authorfullhash}{a647c312207944cc6361137789773067}
+      \strng{authorfullhashraw}{a647c312207944cc6361137789773067}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Journal of Quantum Electronics}
+      \field{note}{arXiv:quant-ph/0605042}
+      \field{title}{Design and performance of an {InGaAs-InP} single-photon avalanche diode detector}
+      \field{year}{2006}
+    \endentry
+    \entry{SPADReview2024}{misc}{}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{arXiv:2408.06921}
+      \field{title}{Recent advances in {InGaAs/InP} single-photon detectors}
+      \field{year}{2024}
+    \endentry
+    \entry{Shea2006}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=d06f989e26baa94b82cb20655b841a3b}{%
+           family={Shea},
+           familyi={S\bibinitperiod},
+           given={Herbert\bibnamedelima R.},
+           giveni={H\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{d06f989e26baa94b82cb20655b841a3b}
+      \strng{fullhash}{d06f989e26baa94b82cb20655b841a3b}
+      \strng{fullhashraw}{d06f989e26baa94b82cb20655b841a3b}
+      \strng{bibnamehash}{d06f989e26baa94b82cb20655b841a3b}
+      \strng{authorbibnamehash}{d06f989e26baa94b82cb20655b841a3b}
+      \strng{authornamehash}{d06f989e26baa94b82cb20655b841a3b}
+      \strng{authorfullhash}{d06f989e26baa94b82cb20655b841a3b}
+      \strng{authorfullhashraw}{d06f989e26baa94b82cb20655b841a3b}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proc. SPIE 6111, Reliability, Packaging, Testing, and Characterization of MEMS/MOEMS V}
+      \field{title}{Reliability of {MEMS} for space applications}
+      \field{year}{2006}
+      \field{pages}{61110A}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1117/12.651008
+      \endverb
+    \endentry
+    \entry{Liu2022}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=e50c58c4c229ee0bccdf32419618b5ea}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yichen},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e50f0d335d445a1196c7bda2df2c98f9}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Lihao},
+           giveni={L\bibinitperiod}}}%
+        {{hash=76f623a13b0fea26a23e067fafbc8148}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={Yongquan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d51b9e73f3798574b24799116c78dca2}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Yuyao},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=a84866b4900b3fe9a714de1f78dbf282}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b9f1507efd28cd892cb3b8bdd55f15d6}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Zhenyu},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{9badeab50aa23633454b962a75b28eaa}
+      \strng{fullhash}{ef8c2e5e7a2312558c89b32c7c54a224}
+      \strng{fullhashraw}{ef8c2e5e7a2312558c89b32c7c54a224}
+      \strng{bibnamehash}{9badeab50aa23633454b962a75b28eaa}
+      \strng{authorbibnamehash}{9badeab50aa23633454b962a75b28eaa}
+      \strng{authornamehash}{9badeab50aa23633454b962a75b28eaa}
+      \strng{authorfullhash}{ef8c2e5e7a2312558c89b32c7c54a224}
+      \strng{authorfullhashraw}{ef8c2e5e7a2312558c89b32c7c54a224}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Micromachines}
+      \field{number}{9}
+      \field{title}{{AlScN} Piezoelectric {MEMS} Mirrors with Large Field of View for {LiDAR} Application}
+      \field{volume}{13}
+      \field{year}{2022}
+      \field{pages}{1550}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
