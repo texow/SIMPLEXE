@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.11)  14 NOV 2026 12:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.11)  14 NOV 2026 21:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1141,186 +1141,192 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [1
 
 {C:/Users/thweb/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
-<ablation_laser.png, id=134, 614.295pt x 421.575pt>
+<ablation_laser.png, id=154, 614.295pt x 421.575pt>
 File: ablation_laser.png Graphic file (type png)
 <use ablation_laser.png>
-Package pdftex.def Info: ablation_laser.png  used on input line 121.
+Package pdftex.def Info: ablation_laser.png  used on input line 117.
 (pdftex.def)             Requested size: 290.21841pt x 199.1695pt.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
- [2 <./ablation_laser.png>]
-Underfull \hbox (badness 1048) in paragraph at lines 144--145
+ [2]
+Underfull \hbox (badness 1048) in paragraph at lines 140--141
 []|\T1/lmr/m/n/10.95 (+20) Several me-ga-watts du-ring the
  []
 
-[3{C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 198.
+[3 <./ablation_laser.png>] [4{C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 194.
  (C:\Users\thweb\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 199--199
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
 []|\T1/lmr/m/n/10 (+20) Electrical po-wer
  []
 
 
-Underfull \hbox (badness 1803) in paragraph at lines 219--219
+Underfull \hbox (badness 1803) in paragraph at lines 215--215
 []|\T1/lmr/m/n/10 (+20) Gated (\T1/lmr/m/it/10 (+20) ga-ted\T1/lmr/m/n/10 (+20) ), syn-chro-ni-sed
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--239
+Underfull \hbox (badness 10000) in paragraph at lines 235--235
 []|\T1/lmr/m/n/10 (+20) Electrical po-wer
  []
 
-[4{C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-<data_management.png, id=178, 663.6795pt x 332.442pt>
+[5{C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [6] [7]
+<wbs.png, id=215, 1413.78188pt x 534.49687pt>
+File: wbs.png Graphic file (type png)
+<use wbs.png>
+Package pdftex.def Info: wbs.png  used on input line 404.
+(pdftex.def)             Requested size: 364.19667pt x 137.68546pt.
+<data_management.png, id=216, 663.6795pt x 332.442pt>
 File: data_management.png Graphic file (type png)
 <use data_management.png>
-Package pdftex.def Info: data_management.png  used on input line 271.
+Package pdftex.def Info: data_management.png  used on input line 413.
 (pdftex.def)             Requested size: 364.19667pt x 182.43277pt.
-<idmcicv1.png, id=179, 737.00343pt x 570.63188pt>
+ [8]
+<idmcicv1.png, id=223, 737.00343pt x 570.63188pt>
 File: idmcicv1.png Graphic file (type png)
 <use idmcicv1.png>
-Package pdftex.def Info: idmcicv1.png  used on input line 297.
+Package pdftex.def Info: idmcicv1.png  used on input line 439.
 (pdftex.def)             Requested size: 364.19667pt x 281.98041pt.
- [5 <./data_management.png>]
-Overfull \hbox (68.45227pt too wide) in alignment at lines 336--337
+ [9 <./wbs.png> <./data_management.png>]
+Overfull \hbox (68.45227pt too wide) in alignment at lines 478--479
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 337--337
+Overfull \hbox (68.45227pt too wide) in alignment at lines 479--479
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 337--337
+Overfull \hbox (68.45227pt too wide) in alignment at lines 479--479
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 337--348
+Overfull \hbox (68.45227pt too wide) in alignment at lines 479--490
  [] [] [] [] [] 
  []
 
-[6 <./idmcicv1.png>]
-Overfull \hbox (68.45227pt too wide) in alignment at lines 352--353
- [] [] [] [] [] 
- []
-
-
-Overfull \hbox (68.45227pt too wide) in alignment at lines 353--353
+[10 <./idmcicv1.png>]
+Overfull \hbox (68.45227pt too wide) in alignment at lines 494--495
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 353--353
+Overfull \hbox (68.45227pt too wide) in alignment at lines 495--495
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 353--362
- [] [] [] [] [] 
- []
-
-c:/Users/thweb/Desktop/Newspace/UE5/PS/SIMPLEXE/PS_OR/argus_risques.tex:362: ignored error: Infinite glue shrinkage found in box being split [7]
-Overfull \hbox (68.45227pt too wide) in alignment at lines 366--367
+Overfull \hbox (68.45227pt too wide) in alignment at lines 495--495
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 367--367
+Overfull \hbox (68.45227pt too wide) in alignment at lines 495--504
+ [] [] [] [] [] 
+ []
+
+c:/Users/thweb/Desktop/Newspace/UE5/PS/SIMPLEXE/PS_OR/argus_risques.tex:504: ignored error: Infinite glue shrinkage found in box being split [11]
+Overfull \hbox (68.45227pt too wide) in alignment at lines 508--509
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 367--367
+Overfull \hbox (68.45227pt too wide) in alignment at lines 509--509
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 367--377
- [] [] [] [] [] 
- []
-
-c:/Users/thweb/Desktop/Newspace/UE5/PS/SIMPLEXE/PS_OR/argus_risques.tex:377: ignored error: Infinite glue shrinkage found in box being split [8]
-Overfull \hbox (68.45227pt too wide) in alignment at lines 381--382
+Overfull \hbox (68.45227pt too wide) in alignment at lines 509--509
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 382--382
+Overfull \hbox (68.45227pt too wide) in alignment at lines 509--519
+ [] [] [] [] [] 
+ []
+
+c:/Users/thweb/Desktop/Newspace/UE5/PS/SIMPLEXE/PS_OR/argus_risques.tex:519: ignored error: Infinite glue shrinkage found in box being split [12]
+Overfull \hbox (68.45227pt too wide) in alignment at lines 523--524
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 382--382
+Overfull \hbox (68.45227pt too wide) in alignment at lines 524--524
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 382--392
- [] [] [] [] [] 
- []
-
-c:/Users/thweb/Desktop/Newspace/UE5/PS/SIMPLEXE/PS_OR/argus_risques.tex:392: ignored error: Infinite glue shrinkage found in box being split [9]
-Overfull \hbox (68.45227pt too wide) in alignment at lines 398--399
+Overfull \hbox (68.45227pt too wide) in alignment at lines 524--524
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 399--399
+Overfull \hbox (68.45227pt too wide) in alignment at lines 524--534
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 399--399
+Overfull \hbox (68.45227pt too wide) in alignment at lines 540--541
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (68.45227pt too wide) in alignment at lines 399--407
+Overfull \hbox (68.45227pt too wide) in alignment at lines 541--541
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (52.45316pt too wide) in alignment at lines 413--417
+Overfull \hbox (68.45227pt too wide) in alignment at lines 541--541
+ [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (68.45227pt too wide) in alignment at lines 541--549
+ [] [] [] [] [] 
+ []
+
+[13]
+Overfull \hbox (52.45316pt too wide) in alignment at lines 555--559
  [] [] [] 
  []
 
 
-Overfull \hbox (52.45316pt too wide) in alignment at lines 417--421
+Overfull \hbox (52.45316pt too wide) in alignment at lines 559--563
  [] [] [] 
  []
 
 
-Overfull \hbox (52.45316pt too wide) in alignment at lines 421--423
+Overfull \hbox (52.45316pt too wide) in alignment at lines 563--565
  [] [] [] 
  []
 
 
-Overfull \hbox (52.45316pt too wide) in alignment at lines 423--433
+Overfull \hbox (52.45316pt too wide) in alignment at lines 565--575
  [] [] [] 
  []
 
-c:/Users/thweb/Desktop/Newspace/UE5/PS/SIMPLEXE/PS_OR/argus_risques.tex:433: ignored error: Infinite glue shrinkage found in box being split [10] [11] (argus_risques.aux)
+[14] (argus_risques.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `argus_risques.out' has not changed.
-(rerunfilecheck)             Checksum: 661CFFF4ABB64CCD9C20B243501E0339;4994.
+(rerunfilecheck)             Checksum: FE324A4E077B606D0B3C9EFD98633D2D;5690.
 Package logreq Info: Writing requests to 'argus_risques.run.xml'.
 \openout1 = `argus_risques.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38704 strings out of 467871
- 795170 string characters out of 5418375
- 1651473 words of memory out of 5000000
- 66817 multiletter control sequences out of 15000+600000
- 700378 words of font info for 160 fonts, out of 8000000 for 9000
+ 38757 strings out of 467871
+ 795862 string characters out of 5418375
+ 1652854 words of memory out of 5000000
+ 66842 multiletter control sequences out of 15000+600000
+ 701009 words of font info for 168 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,16n,97p,1260b,1882s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -1345,9 +1351,9 @@ pdfTeX warning (dest): name{cite.0@OpromollaNocerino} has been referenced but do
 pdfTeX warning (dest): name{cite.0@Vincent2011} has been referenced but does not exist, replaced by a fixed one
 
 <C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/thweb/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb>
-Output written on argus_risques.pdf (11 pages, 2145287 bytes).
+Output written on argus_risques.pdf (14 pages, 2218868 bytes).
 PDF statistics:
- 299 PDF objects out of 1000 (max. 8388607)
- 59 named destinations out of 1000 (max. 500000)
- 47316 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 341 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 47353 words of extra memory for PDF output out of 51595 (max. 10000000)
 

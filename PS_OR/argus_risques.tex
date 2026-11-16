@@ -96,11 +96,7 @@ The second secondary payload is a camera with a machine learning algorithm to de
 Thanks to these two instruments, we can track the debris and fire the laser at it.
 
 \subsection{Experts contacted}
-Ratio of contacted experts: \todo{X}\,\% (\todo{X} experts contacted out of \todo{Y} experts initially identified).
-
-\todo{table of experts (name, field, topic, contacted or not) -- to be defined once the other subsystem is discussed}
-Vincent robert for space mecanique
-if u have someone for laser ablation and ml and camera, please contact him
+Vincent robert, teacher at ipsa about space mechanics. He can have a look at the feasibility of the mission. But he don't have to much time to discute and help us.
 % ==================================================================
 \section{Payload Description}
 % ---------- Payload ----------
@@ -243,6 +239,143 @@ To meet the imposed dimensional constraints, we favour a micro-LiDAR over a conv
 \end{itemize}
 
 
+\subsection{Machine Learning and Computer Vision}\label{subsec:ml_cv}
+
+\subsubsection{Functional description}
+The Auricam D35 acquires monochrome images of the 1--10\,cm debris. A SpaceWire
+interface on the Q8S carrier receives the images; the Q8S handles buffering,
+calibrated image preprocessing and pose estimation, while the CogniSAT-XE2 runs
+the neural networks over Ethernet. SSD-MobileNetV2 detects the debris during
+initial acquisition and reacquisition. HRNet-W32 then locates 2D keypoints in a
+region cropped from the native image, rather than from the reduced detector input.
+
+SQPnP initializes the relative pose from calibrated 2D--3D correspondences with
+a metric model of the debris. During tracking, an adaptive UKF combines the
+keypoint measurements with the motion model to estimate relative position,
+velocity, attitude and angular rate. Its predicted pose sets the next image
+crop; unreliable points are rejected or down-weighted. The navigation output
+contains a timestamp, state estimate, covariance and tracking-quality flags.
+The camera, LiDAR and spacecraft attitude measurements require synchronized
+timestamps and calibrated reference frames. Network training is performed on
+the ground; fixed FP16 models are deployed in flight.
+
+\subsubsection{Quantitative specifications}
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.45}
+\setlength{\tabcolsep}{6pt}
+\caption{Auricam D35 camera configuration.}
+\label{tab:ml_cv_camera}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}X|}
+\hline
+\rowcolor{black!8}
+\textbf{Parameter} & \textbf{Specification / configuration} \\
+\hline
+Optics & 25\,mm focal length, $f/3.5$; $35^{\circ}$ diagonal field of view ($\approx25.4^{\circ}$ per side); $38^{\circ}$ solar exclusion angle \\
+\hline
+Sensor & Monochrome $2048\times2048$, $5.5\,\mu$m pixel pitch, global shutter; 12-bit native output \\
+\hline
+Frame rate & 2.5 frames/s at full resolution; 10 frames/s at $1024\times1024$ with $2\times2$ binning; 2\,Hz nominal mission acquisition \\
+\hline
+Exposure / timing & $60\,\mu$s--30\,s exposure; image timestamp accuracy $<1$\,ms \\
+\hline
+Camera interface & SpaceWire at 20/40/80/160\,Mbit/s; 160\,Mbit/s selected; regulated 5\,V supply (4.6--6\,V input range) \\
+\hline
+Mechanical / thermal & $80\times80\times140$\,mm with baffle; 420\,g; mounting-base temperature $-35$ to $+55\,^{\circ}$C \\
+\hline
+Focus / calibration & Focus setting to be validated over 2--10\,m; intrinsic parameters, distortion, mounting alignment and thermal stability calibrated on the assembled system \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.45}
+\setlength{\tabcolsep}{6pt}
+\caption{Onboard processing hardware and data interfaces.}
+\label{tab:ml_cv_processing}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}X|}
+\hline
+\rowcolor{black!8}
+\textbf{Element} & \textbf{Specification / task} \\
+\hline
+Xiphos Q8S & Zynq UltraScale+ XCZU7EG; 4$\times$ Cortex-A53, 2$\times$ Cortex-R5 and FPGA; 4\,GB LPDDR4 with EDAC; 2$\times$128\,GB eMMC. Image reception, ROI extraction, SQPnP, adaptive UKF and telemetry. \\
+\hline
+Q8S mechanical & $80\times80\times11.2$\,mm; 56\,g excluding connectors; watchdog and FPGA/memory error protection. \\
+\hline
+CogniSAT-XE2 & Myriad X vision accelerator; PC/104 format; approximately 80\,g. FP16 inference for SSD-MobileNetV2 and HRNet-W32; simultaneous graph residency to be verified. \\
+\hline
+Data paths & Auricam $\rightarrow$ Q8S carrier: SpaceWire with FPGA logic/transceivers; Q8S $\leftrightarrow$ XE2: Ethernet. Carrier supplies regulated rails, including 5\,V for the camera and XE2. \\
+\hline
+Software / buffering & Linux ARM64 host and compatible Ubotica/OpenVINO toolchain; initially 1\,GiB of Q8S RAM reserved for vision. One native frame uses 8\,MiB in a 16-bit RAM container. \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.45}
+\setlength{\tabcolsep}{6pt}
+\caption{Vision processing parameters and verification targets.}
+\label{tab:ml_cv_performance}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3.7cm}|>{\raggedright\arraybackslash}X|}
+\hline
+\rowcolor{black!8}
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Detector & SSD-MobileNetV2; $320\times320$ input; bounding box and confidence score; invoked at acquisition, periodic checks and tracking loss. \\
+\hline
+Keypoint network & HRNet-W32; $256\times256$ native-image crop; 28.5 million parameters ($\approx57$\,MB FP16 weights); keypoints and confidence maps. \\
+\hline
+Pose / filter & SQPnP initialization from a metric 3D target model; UKF propagation at 20\,Hz and optical corrections at 2\,Hz. \\
+\hline
+Image link budget & At 2\,Hz: 12-bit packed full frames $\approx126$\,Mbit/s including SpaceWire character overhead; 16-bit unpacked frames $\approx168$\,Mbit/s and exceed the 160\,Mbit/s link. Packet overhead and pixel packing require interface verification. \\
+\hline
+Relative geometry & 1--10\,cm projected target dimension; 2--10\,m evaluation range. At 10\,m: $\approx4.5$--45.5 native pixels, or $\approx0.7$--7.1 pixels in a full frame resized to 320 pixels. \\
+\hline
+Accuracy target & Position error $\leq10$\,cm and attitude error $\leq3^{\circ}$ at the 95th percentile over the 2--10\,m test range. \\
+\hline
+Timing / deployment targets & Image-to-output age $<0.8$\,s (99th percentile, normal tracking); reacquisition $<5$\,s; $<10\%$ increase in the selected pose-error percentile after FP32-to-FP16 conversion. \\
+\hline
+Subsystem envelope & 1\,kg and 2U allocated, including camera, boards, carrier and harness; camera + Q8S + XE2 mass $\approx556$\,g before integration hardware. \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.45}
+\setlength{\tabcolsep}{6pt}
+\caption{Electrical power allocation for the vision subsystem.}
+\label{tab:ml_cv_power}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{4.15cm}|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}X|}
+\hline
+\rowcolor{black!8}
+\textbf{Equipment} & \textbf{Documented power} & \textbf{Design allocation} \\
+\hline
+Auricam D35 camera head (without optional electronics unit) & 2\,W & 3\,W \\
+\hline
+CogniSAT-XE2 & 2.5\,W typical & 5\,W \\
+\hline
+Xiphos Q8S & 5\,W typical & 6\,W \\
+\hline
+Carrier and interfaces & Configuration-dependent & 1\,W \\
+\hline
+\rowcolor{black!4}
+\textbf{Total equipment allocation} & & \textbf{15\,W} \\
+\hline
+\rowcolor{black!4}
+\textbf{Satellite bus allocation} & & \textbf{22\,W} \\
+\hline
+\end{tabularx}
+\end{table}
+
+The 22\,W bus allocation includes 90\% conversion efficiency and a 30\%
+sizing margin ($15/0.90\times1.30\approx21.7$\,W). All accuracy, latency and
+power allocations require end-to-end verification on Auricam--Q8S--XE2 hardware.
+At small apparent target sizes, detector resolution and pose observability
+must also be validated; a restricted search window may be necessary.
+
 
 %\subsection{Functional description of the payloads' behavior}
 %%%\todo{complete and check the sequence below}
@@ -263,6 +396,15 @@ To meet the imposed dimensional constraints, we favour a micro-LiDAR over a conv
 
 % ==================================================================
 \section{System Architecture and Diagrams}
+
+\subsection{WBS}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wbs.png}
+    \caption{Work Breakdown Structure.}
+    \label{fig:wbs}
+\end{figure}
 
 \subsection{Data Management Plan -- functional diagram V1}
 
@@ -288,7 +430,7 @@ The labels on the arrows give the type of data exchanged:
 and \textit{text} (final publication).
 
 \subsection{Satellite platform -- functional diagram V1}
-\todo{insert the figure (see the ``Examples'' tab)look on miro}
+\todo{insert the figure look on miro}
 
 \subsection{Satellite system model V1 (IDM-CIC)}
 
@@ -326,7 +468,7 @@ the camera and the LiDAR.
 
 % ==================================================================
 \section{Mission Report Summary V1}
-\todo{write the summary following the ``Leads for Report Summary'' tab: context, objectives, payloads, architecture, orbit and phases, main risks, schedule}
+\todo{write the summary following the ``Leads for Report Summary''}
 
 % ==================================================================
 \section{Risk Analysis}
